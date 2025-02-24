@@ -30,7 +30,7 @@ content:
       - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
   - name: interviews
     type: collection
-    path: content/interviews
+    path: src/content/interviews
     label: "Comments"
     filename: "{primary}.md"
     fields:
