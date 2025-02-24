@@ -28,3 +28,178 @@ content:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
       - { name: title, label: Title, type: string }
       - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+  - name: interviews
+    type: collection
+    path: content/interviews
+    label: "Comments"
+    filename: "{primary}.md"
+    fields:
+      - name: "id"        
+        label: "ID"        
+        required: true
+        type: number
+        options:
+          step: 1
+
+      - name: "comment_body"
+        label: "Comment content"        
+        type: string
+        required: true
+        description: "Text of the comment. Cannot be NULL."
+
+      - name: "verbatim"
+        label: "Verbatim"        
+        type: boolean
+        required: false
+        description: "TRUE if verbatim from speaker/writer (except for spelling corrections). FALSE if summarized. Can be NULL."
+
+      - name: "commenter"
+        label: "Commenter"        
+        type: "string"
+        required: false
+        description: "Name of the commenter, if available. Can be NULL."
+
+      - label: "Date"
+        name: "date"
+        type: date
+        required: false
+        description: "Date the comment was collected/received. Can be NULL."
+
+      - label: "Type"
+        name: "type"
+        type: select
+        options:
+          values:
+          - value: question
+            label: "Question"
+          - value: concern
+            label: "Concern"
+          - value: idea
+            label: "Idea or Recommendation"
+          - value: comment
+            label: "Comment"
+          - value: other
+            label: "Other"
+        required: false
+        description: "Nature of the statement (dropdown). Can be NULL."
+
+      - name: "source"
+        label: "Source"        
+        type: select
+        options:
+          values:
+          - value: wg_tac
+            label: "WG – TAC (Technical Advisory Committee)"
+          - value: wg_sac
+            label: "WG – SAC (Stakeholder Advisory Committee)"
+          - value: vfg_eflud
+            label: "VFG – EFLUD"
+          - value: vfg_wbccc
+            label: "VFG – WBCCC"
+          - value: vfg_phej
+            label: "VFG – PHEJ"
+          - value: vfg_gegpm
+            label: "VFG – GEGPM"
+          - value: pbe
+            label: "PBE (Partner Based Engagement)"
+          - value: ebe
+            label: "EBE (Event-based engagement)"
+          - value: survey
+            label: "Survey"
+          - value: email_website
+            label: "Email or Website"
+          - value: other
+            label: "Other"
+        required: true
+        description: "Dropdown field for comment source. Cannot be NULL."
+
+      - name: "geography"
+        label: "Geography"        
+        type: select
+        options:
+          type: select
+          options:
+            values:
+            - value: nyc_parks
+              label: "NYC Parks"
+            - value: other_parks
+              label: "Other Parks"
+            - value: public_sites
+              label: "Public Sites"
+            - value: street_trees
+              label: "Street Trees"
+            - value: pops
+              label: "POPS"
+            - value: private_homes
+              label: "Private Homes"
+            - value: private_commercial
+              label: "Private Commercial"
+            - value: campus
+              label: "Campus"
+        required: false
+        description: "Multiple selection field for location of forests/trees. Can be NULL."
+
+      - name: "themes"
+        label: "Themes"        
+        type: select
+        options:        
+          type: select
+          values:
+            - value: advocacy
+              label: "Advocacy"
+            - value: climate_change
+              label: "Climate Change"
+            - value: evaluation
+              label: "Evaluation"
+            - value: forest_health
+              label: "Forest Health"
+            - value: governmental_coordination
+              label: "Governmental Coordination"
+            - value: longevity
+              label: "Longevity"
+            - value: maintenance
+              label: "Maintenance"
+            - value: planting
+              label: "Planting"
+            - value: policy
+              label: "Policy"
+            - value: public_health
+              label: "Public Health"
+            - value: public_private_partnership
+              label: "Public-Private Partnership"
+            - value: resources
+              label: "Resources"
+            - value: species
+              label: "Species"
+            - value: stewardship
+              label: "Stewardship"
+            - value: threats
+              label: "Threats"
+            - value: wildlife
+              label: "Wildlife"
+        required: false
+        description: "Multiple selection field for themes of the comment. Can be NULL."
+
+      - name: "date_created"
+        label: "Date Created"        
+        type: date
+        required: false
+        description: "Autogenerated timestamp for record creation. Pages CMS may not auto-generate this, so this may need backend logic."
+
+      - name: "date_modified"
+        label: "Date Modified"      
+        type: date
+        required: false
+        description: "Autogenerated timestamp for last modification. Pages CMS may not auto-generate this, so backend logic may be required."
+
+      - name: "created_by"
+        label: "Created By"        
+        type: string
+        required: false
+        description: "Autogenerated field recording user who created the record. Blank for form submissions."
+
+      - name: "last_modified_by"
+        label: "Last Modified By"  
+        type: string
+        required: false
+        description: "Autogenerated field recording user who last modified the record."
